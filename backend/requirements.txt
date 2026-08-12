@@ -5,3 +5,4 @@ numpy==2.2.6
 pandas
 opencv-python-headless==5.0.0.93
 Pillow
+reportlab==5.0.0
