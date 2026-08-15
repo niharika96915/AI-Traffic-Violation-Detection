@@ -1,0 +1,3 @@
+VehicleID,VehicleType,Violation,Timestamp,Evidence14,car,Red Light,20260801_113200,violation_14_20260801_113200.jpg
+10,truck,Red Light,20260801_113200,violation_10_20260801_113200.jpg
+21,car,Red Light,20260801_113201,violation_21_20260801_113201.jpg
