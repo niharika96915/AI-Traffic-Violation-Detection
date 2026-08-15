@@ -248,28 +248,23 @@ def debug_csv():
 
     from database.csv_reader import CSV_PATH
     import os
-    import csv
 
-    result = {
-        "csv_path": CSV_PATH,
-        "exists": os.path.exists(CSV_PATH),
-        "size": os.path.getsize(CSV_PATH)
-        if os.path.exists(CSV_PATH)
-        else 0
+    if not os.path.exists(CSV_PATH):
+        return {
+            "exists": False,
+            "message": "CSV not found"
+        }
+
+    with open(
+        CSV_PATH,
+        "r",
+        encoding="utf-8"
+    ) as file:
+
+        content = file.read()
+
+    return {
+        "path": CSV_PATH,
+        "size": os.path.getsize(CSV_PATH),
+        "content": content
     }
-
-    if os.path.exists(CSV_PATH):
-
-        with open(
-            CSV_PATH,
-            "r",
-            newline="",
-            encoding="utf-8"
-        ) as file:
-
-            reader = csv.DictReader(file)
-
-            result["fieldnames"] = reader.fieldnames
-            result["rows"] = list(reader)
-
-    return result
