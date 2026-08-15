@@ -243,3 +243,16 @@ def vehicle_history(number_plate: str):
 
     "violations": violations
 }
+@router.get("/debug-csv")
+def debug_csv():
+
+    from database.csv_reader import CSV_PATH
+    import os
+
+    return {
+        "csv_path": CSV_PATH,
+        "exists": os.path.exists(CSV_PATH),
+        "size": os.path.getsize(CSV_PATH)
+        if os.path.exists(CSV_PATH)
+        else 0
+    }
